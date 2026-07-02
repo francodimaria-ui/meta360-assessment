@@ -26,6 +26,16 @@ export default function App() {
       answers,
       overallScore: computed.overallScore,
       overallBand: computed.overallBand.label,
+      diagnosticoGlobal: computed.overallText,
+      fortalezas: computed.strengths
+        .map((d) => `${d.title} (${d.score}/5, ${d.band.label}): ${d.text}`)
+        .join(" | "),
+      focosPrioritarios: computed.gaps
+        .map((d) => `${d.title} (${d.score}/5, ${d.band.label}): ${d.text}`)
+        .join(" | "),
+      detallePorDimension: computed.dimensionResults
+        .map((d) => `${d.title}: ${d.score}/5 (${d.band.label})`)
+        .join(" | "),
       timestamp: new Date().toISOString(),
     });
   };

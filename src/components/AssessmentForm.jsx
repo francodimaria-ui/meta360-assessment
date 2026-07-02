@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { dimensions } from "../data/questions";
 import LikertQuestion from "./LikertQuestion";
 import ProgressBar from "./ProgressBar";
@@ -11,6 +11,12 @@ export default function AssessmentForm({ onComplete }) {
   const isLastStep = stepIndex === dimensions.length - 1;
   const allAnswered = dim.items.every((item) => answers[item.id]);
 
+  // Sube al tope de la página cada vez que cambia de dimensión,
+  // una vez que la pantalla nueva ya está dibujada (no antes).
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [stepIndex]);
+
   const handleAnswer = (itemId, val) => {
     setAnswers((prev) => ({ ...prev, [itemId]: val }));
   };
@@ -21,14 +27,12 @@ export default function AssessmentForm({ onComplete }) {
       onComplete(answers);
     } else {
       setStepIndex((i) => i + 1);
-      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
   const handleBack = () => {
     if (stepIndex > 0) {
       setStepIndex((i) => i - 1);
-      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 

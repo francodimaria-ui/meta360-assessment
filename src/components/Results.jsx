@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import RadarMap from "./RadarMap";
 
 function ScorePill({ score, band }) {
@@ -29,6 +30,10 @@ function DimensionCard({ d, variant }) {
 
 export default function Results({ participant, results, onRestart }) {
   const { dimensionResults, overallScore, overallBand, overallText, strengths, gaps } = results;
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, []);
 
   return (
     <div className="min-h-screen px-6 py-14 print:py-0 print:bg-white">

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const FIELDS = [
   { key: "name", label: "Nombre y apellido", type: "text" },
@@ -10,6 +10,10 @@ const FIELDS = [
 export default function ParticipantForm({ initial, onSubmit }) {
   const [data, setData] = useState(initial || { name: "", company: "", role: "", email: "" });
   const isValid = Object.values(data).every((v) => v.trim().length > 0);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, []);
 
   return (
     <div className="min-h-screen flex items-center justify-center px-6 py-16">
