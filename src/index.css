@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #101020;
+  color: #F5F4FA;
+}
+
+::selection {
+  background-color: #3B7FC4;
+  color: white;
+}
+
+.likert-dot {
+  transition: all 0.15s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Informe: al exportar a PDF forzamos fondo blanco y texto oscuro para que
+   se lea bien impreso, sin importar el tema oscuro de la pantalla. */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #14141f !important;
+  }
+  .bg-canvas,
+  .bg-surface,
+  .bg-surface2 {
+    background: #ffffff !important;
+  }
+  .border-line {
+    border-color: #E2E2EC !important;
+  }
+  .text-ink,
+  .text-dim {
+    color: #14141f !important;
+  }
+  svg text {
+    fill: #14141f !important;
+  }
+  svg line,
+  svg polygon:not([fill^="url"]) {
+    stroke: #D8D8E4 !important;
+  }
+}
