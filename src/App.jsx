@@ -30,12 +30,17 @@ export default function App() {
       fortalezas: computed.strengths
         .map((d) => `${d.title} (${d.score}/5, ${d.band.label}): ${d.text}`)
         .join(" | "),
-      focosPrioritarios: computed.gaps
-        .map((d) => `${d.title} (${d.score}/5, ${d.band.label}): ${d.text}`)
+      focosPrioritarios: computed.priorities
+        .map((d) => `${d.title} (${d.score}/5, ${d.band.label}) — Decisión: ${d.decision}`)
         .join(" | "),
       detallePorDimension: computed.dimensionResults
-        .map((d) => `${d.title}: ${d.score}/5 (${d.band.label})`)
+        .map((d) => `${d.title}: ${d.score}/5 (${d.pct}%, ${d.band.label})`)
         .join(" | "),
+      executiveInsights: computed.insights
+        .map((i) => `${i.title}: ${i.interpretation}`)
+        .join(" | "),
+      cuelloDeBotella: `${computed.systemMap.bottleneckTitle} (${computed.systemMap.bottleneckPct}%): ${computed.systemMap.risk}`,
+      roadmap90dias: `30d - ${computed.roadmap.day30.focus}: ${computed.roadmap.day30.objetivo} Acciones: ${computed.roadmap.day30.acciones.join("; ")} | 60d - ${computed.roadmap.day60.focus}: ${computed.roadmap.day60.objetivo} Acciones: ${computed.roadmap.day60.acciones.join("; ")} | 90d - ${computed.roadmap.day90.focus}: ${computed.roadmap.day90.objetivo} Acciones: ${computed.roadmap.day90.acciones.join("; ")}`,
       timestamp: new Date().toISOString(),
     });
   };

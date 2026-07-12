@@ -20,7 +20,7 @@ export default function RadarMap({ dimensionResults }) {
   const dataPoints = dimensionResults.map((d, i) => pointFor(i, total, d.score));
   const dataPath = dataPoints.map((p) => `${p.x},${p.y}`).join(" ");
 
-  const benchmarkPoints = dimensionResults.map((_, i) => pointFor(i, total, 4.5));
+  const benchmarkPoints = dimensionResults.map((_, i) => pointFor(i, total, 4.2));
   const benchmarkPath = benchmarkPoints.map((p) => `${p.x},${p.y}`).join(" ");
 
   return (

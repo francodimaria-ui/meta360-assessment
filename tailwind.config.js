@@ -20,6 +20,7 @@ export default {
           dark: "#D93030",
         },
         gold: "#D9A756",
+        orange: "#E08A3C",
         green: "#34B378",
       },
       fontFamily: {
